@@ -1,0 +1,24 @@
+.guideListWrapper {
+    display: flex;
+    margin: 10px;
+    box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.253);
+    border-radius: 0px 0px 20px 0px;
+}
+
+.champImg {
+    margin-right: 10px;
+}
+
+.deleteButton {
+    position: fixed;
+}
+
+.deleteForm {
+    display: flex;
+    /* align-items: center; */
+    justify-content: flex-end;
+    flex: 1;
+    height: auto;
+    padding-right: 1rem;
+    padding-top: 1rem;
+}
