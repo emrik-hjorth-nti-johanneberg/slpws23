@@ -1,0 +1,27 @@
+p = @guideContent
+p = @guideContent["title"]
+
+img.champImg src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/#{@guideContent["name"]}.png"
+form action="/guide/edit" method="post" 
+    input type="text" placeholder="Guide Title" value="#{@guideContent['title']}" name="guide"/
+    select name="champ"
+        - @champs.each do |champ|
+            - if champ['champ_id'] == @guideContent['champ_id']
+                option selected="selected" value="#{champ['champ_id']}" #{champ['name']}
+            - else
+                option value="#{champ['champ_id']}" #{champ['name']} 
+    input type="submit" value="Save"/
+    div 
+
+        input type="hidden" name="id" value="#{@guideContent['id']}"
+
+        - @items.each do |item|  
+            / p = item
+            input type="checkbox" value="#{item['item_id']}" 
+            img src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/item/#{item["item_id"]}.png"
+            
+        
+        
+        
+            / form.deleteItem action="/guide/#{guide['id']}/delete" method="post"
+            /     input.deleteItemButton type="submit" value="Delete"/
