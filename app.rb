@@ -7,19 +7,15 @@ require_relative './model.rb'
 
 
 get ('/') do
-    db = dbConnect()
-    @champs = db.execute("SELECT * FROM Champ")
-    @guides = db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id")
+    @champs = allChamps()
+    @guides = guideList()
     p @guides
     slim(:"guides/index")
 end
 
 post ('/guide/') do 
-    db = dbConnect()
-    guide = params[:guide]
-    champ = params[:champ]
-    db.execute("INSERT INTO Guide (champ_id,title) VALUES (?,?)",champ,guide)
-    id = db.execute("SELECT id FROM Guide ORDER BY id ASC").last()["id"]
+    insertGuideCreation()
+    id = latestGuideId()
     redirect("/guide/#{id}/edit")
 end
 
@@ -27,7 +23,7 @@ get ('/guide/:id') do
     db = dbConnect()
     id = params[:id].to_i
     @guideContent = db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id WHERE Guide.id = ?",id).first()
-    @items = db.execute("SELECT Items.* FROM Items INNER JOIN Guide, GuideItemRelation ON Items.item_id = GuideItemRelation.item_id AND Guide.id = GuideItemRelation.guide_id WHERE Guide.id = ?",id)
+    @items = items(id)
     p @items
     slim(:"guides/show")
 end
@@ -51,9 +47,16 @@ get ('/guide/:id/edit') do
 end
 
 post ('/guide/edit') do
+    db = dbConnect()
     id = params[:id]
-    # items = params[:]
 
-
+    items = []
+    for i in 1..7 do
+        items << params[:"item#{i}"]
+    end
+    p items[0]
+    for i in 0..6 do
+        insertGuideEdit = db.execute("INSERT INTO GuideItemRelation (guide_id,item_id) VALUES (?,?)",id,items[i])
+    end
     redirect("guide/#{id}")
 end

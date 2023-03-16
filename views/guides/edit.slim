@@ -14,11 +14,15 @@ form action="/guide/edit" method="post"
     div 
 
         input type="hidden" name="id" value="#{@guideContent['id']}"
-
-        - @items.each do |item|  
+        -for i in 1..7 do 
+            select name="item#{i}" 
+                option selected="selected" value="" 
+                - @items.each do |item|  
+                    option value="#{item['item_id']}" #{item['name']} 
+                    / Kanske går tillbaka en version på github beroende på om jag vill köra checkbox eller select
             / p = item
-            input type="checkbox" value="#{item['item_id']}" 
-            img src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/item/#{item["item_id"]}.png"
+            / input type="checkbox" value="#{item['item_id']}" 
+            / img src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/item/#{item["item_id"]}.png"
             
         
         
