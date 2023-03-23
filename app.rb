@@ -49,14 +49,22 @@ end
 post ('/guide/edit') do
     db = dbConnect()
     id = params[:id]
+    champ = params[:champ]
+    guideTitle = params[:guide]
+
+    db.execute("UPDATE Guide SET champ_id = ?, title = ? WHERE id = ?",champ,guideTitle,id)
 
     items = []
     for i in 1..7 do
         items << params[:"item#{i}"]
     end
     p items[0]
+    # @guideContent = db.execute("")
+    db.execute("DELETE FROM GuideItemRelation WHERE guide_id = ?",id)
     for i in 0..6 do
-        insertGuideEdit = db.execute("INSERT INTO GuideItemRelation (guide_id,item_id) VALUES (?,?)",id,items[i])
+        if items[i] != ''
+            insertGuideEdit = db.execute("INSERT INTO GuideItemRelation (guide_id,item_id) VALUES (?,?)",id,items[i])
+        end
     end
     redirect("guide/#{id}")
 end
