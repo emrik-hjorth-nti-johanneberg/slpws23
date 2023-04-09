@@ -1,8 +1,9 @@
 p = @guideContent
 p = @guideContent["title"]
 
-form action="/guide/#{@guideContent['id']}/edit" method="get" 
-    input type="submit" value="Edit"/
+- if session["id"] == @user_id["user_id"].to_i || session["id"] == 1
+    form action="/guide/#{@guideContent['id']}/edit" method="get" 
+        input type="submit" value="Edit"/
 
 img.champImg src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/#{@guideContent["name"]}.png"
 

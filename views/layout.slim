@@ -10,10 +10,13 @@ html lang="en"
         nav 
             
             a href="/" Home 
-            a href="/login" Log in
-            a href="/showregister" Sign Up
-            form action="/logout" method="POST" 
-                input type="submit" value="Log out"
-            p #{session["username"]}
-            p #{session["id"]}
+            a href="/login" Log in 
+            a href="/showregister" Sign Up 
+            - if session["id"] != nil
+                form action="/logout" method="POST" 
+                    input type="submit" value="Log out"
+            - if session["id"] != nil
+                p You are logged in as #{session["username"]}
+                - if session["id"] == 1
+                    p Admin
         ==yield

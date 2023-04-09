@@ -1,11 +1,12 @@
 h1 Meta Guides
 
-form action="/guide/" method="post" 
-    select name="champ"
-        - @champs.each do |champ|
-            option value="#{champ['champ_id']}" #{champ['name']} 
-    input type="text" placeholder="Guide Title" name="guide"/
-    input type="submit" value="Create Guide"/
+- if session["id"] != nil
+    form action="/guide/" method="post" 
+        select name="champ"
+            - @champs.each do |champ|
+                option value="#{champ['champ_id']}" #{champ['name']} 
+        input type="text" placeholder="Guide Title" name="guide"/
+        input type="submit" value="Create Guide"/
 / p = @guides
 h3 Guides:
 section.flex  
@@ -14,8 +15,6 @@ section.flex
             .guideListWrapper
                 img.champImg src="https://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/#{guide["name"]}.png" 
                 h3.guideTitle #{guide["title"]}
-                form action="/guide/#{guide['id']}/edit" method="get" 
-                    input type="submit" value="Edit"/
                 form.deleteForm action="/guide/#{guide['id']}/delete" method="post"
                     input.deleteButton type="submit" value="Delete"/
 

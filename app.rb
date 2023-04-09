@@ -7,48 +7,47 @@ require_relative './model.rb'
 
 enable :sessions
 
+include Model
+
+# Display login Page
+#
 get ('/login') do
 
     slim(:"login")
 end
 
+# Logs you in
+# 
+# @param [string] :username, the input username
+# @param [string] :password, the input password
+# 
+# @see Model#get_article
 post("/login") do
-    username = params[:username]
-    password = params[:password]
-  
     db = dbConnect()
     db.results_as_hash = true
-    result = db.execute("SELECT * FROM User WHERE name = ?", username).first
-    
+    result = resultUser()
+
     if result == nil 
       "Wrong username or password."
       return
     end
-
-    pwdigest = result["pwdigest"]
-    id = result["id"]
-
-    if BCrypt::Password.new(pwdigest) == password
-        session["id"] = id
-        session["username"] = username
-        p "Login Successful"
-        session["isloggedin"] = true
-        redirect("/")
-    else
-        "Wrong username or password."
-    end
-    
+    loginCheck()
 end
 
+# Registers a new user
+# 
+# @param [string] :username, the input username that gets registered
+# @param [string] :password, the input password that gets registered
+# @param [string] :password_confirm, the input that confirms the password
+# @see Model#get_article
 post("/users/new") do
     username = params[:username]
     password = params[:password]
     password_confirm = params[:password_confirm]
     
     if (password == password_confirm)
-      password_digest = BCrypt::Password.create(password)
       db = dbConnect()
-      db.execute("INSERT INTO User (name, pwdigest) VALUES (?, ?)", username, password_digest)
+      createUser()
       redirect('/')
     else
       p password + " " + password_confirm
@@ -56,6 +55,7 @@ post("/users/new") do
     end
 end
 
+# Logs you out
 post("/logout") do
     if session["id"] != nil
       session["id"] = nil
@@ -65,11 +65,15 @@ post("/logout") do
     redirect("/")
 end 
   
-
+# Register page
+# 
 get('/showregister') do
     slim(:register)
 end
 
+# Display Landing Page
+# 
+# @see Model#get_article
 get ('/') do
     @champs = allChamps()
     @guides = guideList()
@@ -77,64 +81,87 @@ get ('/') do
     slim(:"guides/index")
 end
 
+# Creates a guide
+# 
+# @param [String] :champ, the name of the selected champ when creating a guide
+# @param [String] :guide, the title of the guide
+# 
+# @see Model#get_article
 post ('/guide/') do 
-    insertGuideCreation()
-    id = latestGuideId()
-    redirect("/guide/#{id}/edit")
+    guide = params[:guide]
+    champ = params[:champ]
+    if session["id"] != nil   
+        insertGuideCreation()
+        id = latestGuideId()
+        redirect("/guide/#{id}/edit")
+    else
+        "You have to be logged in to use this feature"
+    end
 end
 
+# Display guide
+# 
+# @param [Integer] :id, the selected guides id
+# 
+# @see Model#get_article
 get ('/guide/:id') do
     db = dbConnect()
     id = params[:id].to_i
-    @guideContent = db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id WHERE Guide.id = ?",id).first()
+    @guideContent = guideContent()
     @items = items(id)
+    @user_id = userId()
     p @items
     slim(:"guides/show")
 end
 
+# Delete a guide
+# 
+# @param [Integer] :id, the selected guides id
+# 
+# @see Model#get_article
 post ('/guide/:id/delete') do
     db = dbConnect()
     id = params[:id].to_i
-    user_id = db.execute("SELECT user_id FROM Guide WHERE id = ?", id)
+    user_id = userId()
     p user_id
-    if session["id"] = user_id
-        result = db.execute("DELETE FROM Guide WHERE id = ?", id)
+    if session["id"] == user_id["user_id"].to_i || session["id"] == 1
+        result = deleteGuide()
         redirect('/')
     else
         "You do not have permission to use this function"
     end
 end
 
+# Display a guides edit-page
+# 
+# @param [Integer] :the selected guides id
+# 
+# @see Model#get_article
 get ('/guide/:id/edit') do
     db = dbConnect()
     id = params[:id].to_i
-    @champs = db.execute("SELECT * FROM Champ")
-    @guideContent = db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id WHERE Guide.id = ?",id).first()
-    # @items = db.execute("SELECT Items.* FROM Items INNER JOIN Guide, GuideItemRelation ON Items.item_id = GuideItemRelation.item_id AND Guide.id = GuideItemRelation.guide_id WHERE Guide.id = ?",id)
-    @items = db.execute("SELECT * FROM Items")
+    @champs = allChamps()
+    @guideContent = guideContent()
+    @items = allItems()
     # p @items
     slim(:"guides/edit")
 end
 
+# Edits a guide
+# 
+# @param [Integer] :id, the selected guides id
+# @param [string] :champ, the selected champs name
+# @param [string] :guide, the title of the guide
+# 
+# @see Model#get_article
 post ('/guide/edit') do
     db = dbConnect()
     id = params[:id]
     champ = params[:champ]
     guideTitle = params[:guide]
 
-    db.execute("UPDATE Guide SET champ_id = ?, title = ? WHERE id = ?",champ,guideTitle,id)
+    updateGuide()
 
-    items = []
-    for i in 1..7 do
-        items << params[:"item#{i}"]
-    end
-    p items[0]
-    # @guideContent = db.execute("")
-    db.execute("DELETE FROM GuideItemRelation WHERE guide_id = ?",id)
-    for i in 0..6 do
-        if items[i] != ''
-            insertGuideEdit = db.execute("INSERT INTO GuideItemRelation (guide_id,item_id) VALUES (?,?)",id,items[i])
-        end
-    end
+    updateGuideItems()
     redirect("guide/#{id}")
 end
