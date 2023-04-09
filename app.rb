@@ -5,6 +5,70 @@ require 'sqlite3'
 require 'bcrypt'
 require_relative './model.rb'
 
+enable :sessions
+
+get ('/login') do
+
+    slim(:"login")
+end
+
+post("/login") do
+    username = params[:username]
+    password = params[:password]
+  
+    db = dbConnect()
+    db.results_as_hash = true
+    result = db.execute("SELECT * FROM User WHERE name = ?", username).first
+    
+    if result == nil 
+      "Wrong username or password."
+      return
+    end
+
+    pwdigest = result["pwdigest"]
+    id = result["id"]
+
+    if BCrypt::Password.new(pwdigest) == password
+        session["id"] = id
+        session["username"] = username
+        p "Login Successful"
+        session["isloggedin"] = true
+        redirect("/")
+    else
+        "Wrong username or password."
+    end
+    
+end
+
+post("/users/new") do
+    username = params[:username]
+    password = params[:password]
+    password_confirm = params[:password_confirm]
+    
+    if (password == password_confirm)
+      password_digest = BCrypt::Password.create(password)
+      db = dbConnect()
+      db.execute("INSERT INTO User (name, pwdigest) VALUES (?, ?)", username, password_digest)
+      redirect('/')
+    else
+      p password + " " + password_confirm
+      "Passwords did not match"
+    end
+end
+
+post("/logout") do
+    if session["id"] != nil
+      session["id"] = nil
+      session["username"] = nil
+    end
+    session["isloggedin"] = false
+    redirect("/")
+end 
+  
+
+get('/showregister') do
+    slim(:register)
+end
 
 get ('/') do
     @champs = allChamps()
@@ -31,8 +95,14 @@ end
 post ('/guide/:id/delete') do
     db = dbConnect()
     id = params[:id].to_i
-    result = db.execute("DELETE FROM Guide WHERE id = ?", id)
-    redirect('/')
+    user_id = db.execute("SELECT user_id FROM Guide WHERE id = ?", id)
+    p user_id
+    if session["id"] = user_id
+        result = db.execute("DELETE FROM Guide WHERE id = ?", id)
+        redirect('/')
+    else
+        "You do not have permission to use this function"
+    end
 end
 
 get ('/guide/:id/edit') do

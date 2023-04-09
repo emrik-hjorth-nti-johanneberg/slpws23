@@ -18,15 +18,16 @@ end
 
 def guideList()
     db = dbConnect()
-   guides = db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id")
-   return guides
+    guides = db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id")
+    return guides
 end
 
 def insertGuideCreation()
     db = dbConnect()
     guide = params[:guide]
     champ = params[:champ]
-    db.execute("INSERT INTO Guide (champ_id,title) VALUES (?,?)",champ,guide)
+    user = session["id"]
+    db.execute("INSERT INTO Guide (champ_id,title,user_id) VALUES (?,?,?)",champ,guide,user)
 end
 
 def latestGuideId()

@@ -8,7 +8,12 @@ html lang="en"
         title Meta Guides
     body 
         nav 
+            
             a href="/" Home 
-            a href="" Sign In
-            a href="" Sign Up
+            a href="/login" Log in
+            a href="/showregister" Sign Up
+            form action="/logout" method="POST" 
+                input type="submit" value="Log out"
+            p #{session["username"]}
+            p #{session["id"]}
         ==yield
