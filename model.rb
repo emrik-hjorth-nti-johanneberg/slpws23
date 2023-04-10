@@ -60,7 +60,7 @@ module Model
             end
         end
     end
- 
+
     # Selects all champs in the database
     # 
     # @return [hash] A hash with all of the champs data
@@ -109,7 +109,7 @@ module Model
     # 
     # @param [string] :password, the password of the user
     # @param [string] :username, the username of the user
-    def conditionalPwdigest()
+    def loginCheck()
         username = params[:username]
         password = params[:password]
         result = resultUser()
@@ -202,5 +202,6 @@ module Model
         db = dbConnect()
         id = params[:id].to_i
         db.execute("DELETE FROM Guide WHERE id = ?", id)
+        db.execute("DELETE FROM GuideItemRelation WHERE guide_id = ?", id)
     end
 end
