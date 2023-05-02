@@ -219,4 +219,11 @@ module Model
         end
 
     end
+
+    def login_attempt(user)
+        db = dbConnect()
+        db.execute("INSERT INTO loginAttempts (user, time) VALUES (?,?)", user, Time.now.to_i)
+        result = db.execute("SELECT * FROM loginAttempts WHERE user = ?", user)
+        return result
+    end
 end

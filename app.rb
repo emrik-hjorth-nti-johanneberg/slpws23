@@ -34,11 +34,18 @@ end
 # 
 # @see Model#get_article
 post("/login") do
-    p "hej"
     db = dbConnect()
     db.results_as_hash = true
     password = params[:password]
     username = params[:username]
+    login_attempts = login_attempt(username)
+    if (login_attempts.length > 5 && Time.now.to_i - login_attempts.reverse[5]["time"] < 10)
+        redirect('/login')
+    end
+    p "hej"
+    
+    
+    
     result = resultUser(username)
     p result
     p "hej"
@@ -61,20 +68,6 @@ post("/login") do
         # sleep
         # redirect('/')
     end
-    # if BCrypt::Password.new(pwdigest) == password
-        
-    #     session["id"] = id
-    #     session["username"] = username
-    #     p "Login Successful"
-    #     session["isloggedin"] = true
-    #     redirect("/")
-    # else
-    #     "jhfjhgfjhfhj"
-    # end
-
-
-    # username = params[:username]
-        # password = params[:password]
 end
 
 # Registers a new user
