@@ -220,6 +220,12 @@ module Model
 
     end
 
+    # Logs time and login attempts to a certain account
+    # 
+    # @return [Array]
+    # @option [Hash] "user"
+    # @option [Hash] "id"
+    # @option [Hash] "time"
     def login_attempt(user)
         db = dbConnect()
         db.execute("INSERT INTO loginAttempts (user, time) VALUES (?,?)", user, Time.now.to_i)

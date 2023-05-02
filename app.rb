@@ -42,13 +42,11 @@ post("/login") do
     if (login_attempts.length > 5 && Time.now.to_i - login_attempts.reverse[5]["time"] < 10)
         redirect('/login')
     end
-    p "hej"
     
     
     
     result = resultUser(username)
     p result
-    p "hej"
     
     if result != nil 
         pwdigest = result["pwdigest"]

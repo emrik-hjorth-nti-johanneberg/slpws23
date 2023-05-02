@@ -281,6 +281,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="top-level-namespace.html#POST__guide__id_deleteUser-instance_method" title="#POST /guide/:id/deleteUser (instance method)">#<strong>POST /guide/:id/deleteUser</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Deletes a user and all the related guides.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="top-level-namespace.html#POST__guide_edit-instance_method" title="#POST /guide/edit (instance method)">#<strong>POST /guide/edit</strong>  &#x21d2; Object </a>
     
 
@@ -387,7 +411,7 @@
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Model.html" title="Model (module)">Model</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Model.html#allChamps-instance_method" title="Model#allChamps (method)">#allChamps</a></span>, <span class='object_link'><a href="Model.html#allItems-instance_method" title="Model#allItems (method)">#allItems</a></span>, <span class='object_link'><a href="Model.html#conditionalPwdigest-instance_method" title="Model#conditionalPwdigest (method)">#conditionalPwdigest</a></span>, <span class='object_link'><a href="Model.html#createUser-instance_method" title="Model#createUser (method)">#createUser</a></span>, <span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">#dbConnect</a></span>, <span class='object_link'><a href="Model.html#deleteGuide-instance_method" title="Model#deleteGuide (method)">#deleteGuide</a></span>, <span class='object_link'><a href="Model.html#guideContent-instance_method" title="Model#guideContent (method)">#guideContent</a></span>, <span class='object_link'><a href="Model.html#guideId-instance_method" title="Model#guideId (method)">#guideId</a></span>, <span class='object_link'><a href="Model.html#guideList-instance_method" title="Model#guideList (method)">#guideList</a></span>, <span class='object_link'><a href="Model.html#insertGuideCreation-instance_method" title="Model#insertGuideCreation (method)">#insertGuideCreation</a></span>, <span class='object_link'><a href="Model.html#items-instance_method" title="Model#items (method)">#items</a></span>, <span class='object_link'><a href="Model.html#latestGuideId-instance_method" title="Model#latestGuideId (method)">#latestGuideId</a></span>, <span class='object_link'><a href="Model.html#resultUser-instance_method" title="Model#resultUser (method)">#resultUser</a></span>, <span class='object_link'><a href="Model.html#updateGuide-instance_method" title="Model#updateGuide (method)">#updateGuide</a></span>, <span class='object_link'><a href="Model.html#updateGuideItems-instance_method" title="Model#updateGuideItems (method)">#updateGuideItems</a></span>, <span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">#userId</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Model.html#allChamps-instance_method" title="Model#allChamps (method)">#allChamps</a></span>, <span class='object_link'><a href="Model.html#allItems-instance_method" title="Model#allItems (method)">#allItems</a></span>, <span class='object_link'><a href="Model.html#createUser-instance_method" title="Model#createUser (method)">#createUser</a></span>, <span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">#dbConnect</a></span>, <span class='object_link'><a href="Model.html#deleteGuide-instance_method" title="Model#deleteGuide (method)">#deleteGuide</a></span>, <span class='object_link'><a href="Model.html#deleteUser-instance_method" title="Model#deleteUser (method)">#deleteUser</a></span>, <span class='object_link'><a href="Model.html#guideContent-instance_method" title="Model#guideContent (method)">#guideContent</a></span>, <span class='object_link'><a href="Model.html#guideList-instance_method" title="Model#guideList (method)">#guideList</a></span>, <span class='object_link'><a href="Model.html#insertGuideCreation-instance_method" title="Model#insertGuideCreation (method)">#insertGuideCreation</a></span>, <span class='object_link'><a href="Model.html#items-instance_method" title="Model#items (method)">#items</a></span>, <span class='object_link'><a href="Model.html#latestGuideId-instance_method" title="Model#latestGuideId (method)">#latestGuideId</a></span>, <span class='object_link'><a href="Model.html#login_attempt-instance_method" title="Model#login_attempt (method)">#login_attempt</a></span>, <span class='object_link'><a href="Model.html#resultUser-instance_method" title="Model#resultUser (method)">#resultUser</a></span>, <span class='object_link'><a href="Model.html#updateGuide-instance_method" title="Model#updateGuide (method)">#updateGuide</a></span>, <span class='object_link'><a href="Model.html#updateGuideItems-instance_method" title="Model#updateGuideItems (method)">#updateGuideItems</a></span>, <span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">#userId</a></span></p>
 
 
   <div id="instance_method_details" class="method_details_list">
@@ -429,21 +453,21 @@
       <pre class="lines">
 
 
-77
-78
-79
-80
-81
-82</pre>
+111
+112
+113
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 77</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 111</span>
 
 <span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='ivar'>@champs</span> <span class='op'>=</span> <span class='id identifier rubyid_allChamps'><span class='object_link'><a href="Model.html#allChamps-instance_method" title="Model#allChamps (method)">allChamps</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='ivar'>@guides</span> <span class='op'>=</span> <span class='id identifier rubyid_guideList'><span class='object_link'><a href="Model.html#guideList-instance_method" title="Model#guideList (method)">guideList</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_p'>p</span> <span class='ivar'>@guides</span>
-    <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;guides/index&quot;</span><span class='rparen'>)</span>
+    <span class='comment'># p @guides
+</span>    <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;guides/index&quot;</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -505,25 +529,27 @@
       <pre class="lines">
 
 
-107
-108
-109
-110
-111
-112
-113
-114
-115</pre>
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 142</span>
 
 <span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/guide/:id</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='comment'># id = params[:id]
+</span>    <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-    <span class='ivar'>@guideContent</span> <span class='op'>=</span> <span class='id identifier rubyid_guideContent'><span class='object_link'><a href="Model.html#guideContent-instance_method" title="Model#guideContent (method)">guideContent</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='ivar'>@guideContent</span> <span class='op'>=</span> <span class='id identifier rubyid_guideContent'><span class='object_link'><a href="Model.html#guideContent-instance_method" title="Model#guideContent (method)">guideContent</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
     <span class='ivar'>@items</span> <span class='op'>=</span> <span class='id identifier rubyid_items'><span class='object_link'><a href="Model.html#items-instance_method" title="Model#items (method)">items</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
-    <span class='ivar'>@user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_userId'><span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">userId</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='ivar'>@user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_userId'><span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">userId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_p'>p</span> <span class='ivar'>@items</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;guides/show&quot;</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -587,24 +613,24 @@
       <pre class="lines">
 
 
-140
-141
-142
-143
-144
-145
-146
-147
-148</pre>
+196
+197
+198
+199
+200
+201
+202
+203
+204</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 196</span>
 
 <span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/guide/:id/edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
     <span class='ivar'>@champs</span> <span class='op'>=</span> <span class='id identifier rubyid_allChamps'><span class='object_link'><a href="Model.html#allChamps-instance_method" title="Model#allChamps (method)">allChamps</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='ivar'>@guideContent</span> <span class='op'>=</span> <span class='id identifier rubyid_guideContent'><span class='object_link'><a href="Model.html#guideContent-instance_method" title="Model#guideContent (method)">guideContent</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='ivar'>@guideContent</span> <span class='op'>=</span> <span class='id identifier rubyid_guideContent'><span class='object_link'><a href="Model.html#guideContent-instance_method" title="Model#guideContent (method)">guideContent</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
     <span class='ivar'>@items</span> <span class='op'>=</span> <span class='id identifier rubyid_allItems'><span class='object_link'><a href="Model.html#allItems-instance_method" title="Model#allItems (method)">allItems</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='comment'># p @items
 </span>    <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;guides/edit&quot;</span><span class='rparen'>)</span>
@@ -650,9 +676,9 @@
     <td>
       <pre class="code"><span class="info file"># File 'app.rb', line 14</span>
 
-<span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
 
-    <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;login&quot;</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:login</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -687,12 +713,12 @@
       <pre class="lines">
 
 
-70
-71
-72</pre>
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 104</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/showregister</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:register</span><span class='rparen'>)</span>
@@ -773,26 +799,28 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100</pre>
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 124</span>
 
 <span class='id identifier rubyid_post'>post</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/guide/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
     <span class='id identifier rubyid_guide'>guide</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:guide</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_champ'>champ</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:champ</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span>   
-        <span class='id identifier rubyid_insertGuideCreation'><span class='object_link'><a href="Model.html#insertGuideCreation-instance_method" title="Model#insertGuideCreation (method)">insertGuideCreation</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_insertGuideCreation'><span class='object_link'><a href="Model.html#insertGuideCreation-instance_method" title="Model#insertGuideCreation (method)">insertGuideCreation</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_guide'>guide</span><span class='comma'>,</span> <span class='id identifier rubyid_champ'>champ</span><span class='comma'>,</span> <span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_latestGuideId'><span class='object_link'><a href="Model.html#latestGuideId-instance_method" title="Model#latestGuideId (method)">latestGuideId</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/guide/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/edit</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
@@ -859,33 +887,122 @@
       <pre class="lines">
 
 
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133</pre>
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 158</span>
 
 <span class='id identifier rubyid_post'>post</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/guide/:id/delete</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-    <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_userId'><span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">userId</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_userId'><span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">userId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_user_id'>user_id</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>user_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>||</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>1</span>
-        <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_deleteGuide'><span class='object_link'><a href="Model.html#deleteGuide-instance_method" title="Model#deleteGuide (method)">deleteGuide</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_deleteGuide'><span class='object_link'><a href="Model.html#deleteGuide-instance_method" title="Model#deleteGuide (method)">deleteGuide</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
         <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
         <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You do not have permission to use this function</span><span class='tstring_end'>&quot;</span></span>
     <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="POST__guide__id_deleteUser-instance_method">
+  
+    #<strong>POST /guide/:id/deleteUser</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Deletes a user and all the related guides</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>:id,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the selected guides id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app.rb', line 174</span>
+
+<span class='id identifier rubyid_post'>post</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/guide/:id/deleteUser</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+    <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_id'>id</span>
+    <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_userId'><span class='object_link'><a href="Model.html#userId-instance_method" title="Model#userId (method)">userId</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='int'>1</span>
+        <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_deleteUser'><span class='object_link'><a href="Model.html#deleteUser-instance_method" title="Model#deleteUser (method)">deleteUser</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+        <span class='kw'>if</span> <span class='ivar'>@validation</span> <span class='op'>==</span> <span class='kw'>true</span>
+            <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+        <span class='kw'>else</span> 
+            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>You do not have permission to use this function</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>end</span>
+    <span class='kw'>end</span>
+    
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -979,32 +1096,38 @@
       <pre class="lines">
 
 
-157
-158
-159
-160
-161
-162
-163
-164
-165
-166
-167</pre>
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 213</span>
 
 <span class='id identifier rubyid_post'>post</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/guide/edit</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_champ'>champ</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:champ</span><span class='rbracket'>]</span>
     <span class='id identifier rubyid_guideTitle'>guideTitle</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:guide</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_items'><span class='object_link'><a href="Model.html#items-instance_method" title="Model#items (method)">items</a></span></span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+    <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>1</span><span class='op'>..</span><span class='int'>7</span> <span class='kw'>do</span>
+        <span class='id identifier rubyid_items'><span class='object_link'><a href="Model.html#items-instance_method" title="Model#items (method)">items</a></span></span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:&quot;item</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_updateGuide'><span class='object_link'><a href="Model.html#updateGuide-instance_method" title="Model#updateGuide (method)">updateGuide</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_champ'>champ</span><span class='comma'>,</span> <span class='id identifier rubyid_guideTitle'>guideTitle</span><span class='rparen'>)</span>
 
-    <span class='id identifier rubyid_updateGuide'><span class='object_link'><a href="Model.html#updateGuide-instance_method" title="Model#updateGuide (method)">updateGuide</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-    <span class='id identifier rubyid_updateGuideItems'><span class='object_link'><a href="Model.html#updateGuideItems-instance_method" title="Model#updateGuideItems (method)">updateGuideItems</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>guide/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+    <span class='id identifier rubyid_updateGuideItems'><span class='object_link'><a href="Model.html#updateGuideItems-instance_method" title="Model#updateGuideItems (method)">updateGuideItems</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_champ'>champ</span><span class='comma'>,</span> <span class='id identifier rubyid_guideTitle'>guideTitle</span><span class='comma'>,</span> <span class='id identifier rubyid_items'><span class='object_link'><a href="Model.html#items-instance_method" title="Model#items (method)">items</a></span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>guide/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#lsjhfgls
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1081,31 +1204,77 @@
       <pre class="lines">
 
 
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35</pre>
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 36</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_db'>db</span><span class='period'>.</span><span class='id identifier rubyid_results_as_hash'>results_as_hash</span> <span class='op'>=</span> <span class='kw'>true</span>
-    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_resultUser'><span class='object_link'><a href="Model.html#resultUser-instance_method" title="Model#resultUser (method)">resultUser</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-
-    <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>==</span> <span class='kw'>nil</span> 
-      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Wrong username or password.</span><span class='tstring_end'>&quot;</span></span>
-      <span class='kw'>return</span>
+    <span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:password</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_login_attempts'>login_attempts</span> <span class='op'>=</span> <span class='id identifier rubyid_login_attempt'><span class='object_link'><a href="Model.html#login_attempt-instance_method" title="Model#login_attempt (method)">login_attempt</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_login_attempts'>login_attempts</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>5</span> <span class='op'>&amp;&amp;</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>-</span> <span class='id identifier rubyid_login_attempts'>login_attempts</span><span class='period'>.</span><span class='id identifier rubyid_reverse'>reverse</span><span class='lbracket'>[</span><span class='int'>5</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>time</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>&lt;</span> <span class='int'>10</span><span class='rparen'>)</span>
+        <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_loginCheck'>loginCheck</span><span class='lparen'>(</span><span class='rparen'>)</span>
+    
+    
+    
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_resultUser'><span class='object_link'><a href="Model.html#resultUser-instance_method" title="Model#resultUser (method)">resultUser</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_result'>result</span>
+    
+    <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span> <span class='op'>!=</span> <span class='kw'>nil</span> 
+        <span class='id identifier rubyid_pwdigest'>pwdigest</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pwdigest</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+        <span class='kw'>if</span> <span class='const'>BCrypt</span><span class='op'>::</span><span class='const'>Password</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_pwdigest'>pwdigest</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_password'>password</span>
+        
+            <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_id'>id</span>
+            <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>username</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_username'>username</span>
+            <span class='id identifier rubyid_p'>p</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Login Successful</span><span class='tstring_end'>&quot;</span></span>
+            <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>isloggedin</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+            <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+        <span class='kw'>else</span>
+            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>jhfjhgfjhfhj</span><span class='tstring_end'>&quot;</span></span>
+        <span class='kw'>end</span>
+    <span class='kw'>else</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Wrong Username or Password. Please try again</span><span class='tstring_end'>&quot;</span></span>
+        <span class='comment'># sleep
+</span>        <span class='comment'># redirect(&#39;/&#39;)
+</span>    <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1140,17 +1309,17 @@
       <pre class="lines">
 
 
-59
-60
-61
-62
-63
-64
-65
-66</pre>
+93
+94
+95
+96
+97
+98
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 93</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/logout</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='kw'>nil</span>
@@ -1252,23 +1421,23 @@
       <pre class="lines">
 
 
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56</pre>
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 77</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/users/new</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
     <span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span>
@@ -1277,7 +1446,7 @@
     
     <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span> <span class='op'>==</span> <span class='id identifier rubyid_password_confirm'>password_confirm</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_db'>db</span> <span class='op'>=</span> <span class='id identifier rubyid_dbConnect'><span class='object_link'><a href="Model.html#dbConnect-instance_method" title="Model#dbConnect (method)">dbConnect</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_createUser'><span class='object_link'><a href="Model.html#createUser-instance_method" title="Model#createUser (method)">createUser</a></span></span><span class='lparen'>(</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_createUser'><span class='object_link'><a href="Model.html#createUser-instance_method" title="Model#createUser (method)">createUser</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='comma'>,</span> <span class='id identifier rubyid_password_confirm'>password_confirm</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_p'>p</span> <span class='id identifier rubyid_password'>password</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_password_confirm'>password_confirm</span>
@@ -1294,7 +1463,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr  9 23:15:04 2023 by
+  Generated on Tue May  2 18:03:47 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.32 (ruby-3.2.1).
 </div>
