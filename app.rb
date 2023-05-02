@@ -231,5 +231,5 @@ post ('/guide/edit') do
     updateGuide(id, champ, guideTitle)
 
     updateGuideItems(id, champ, guideTitle, items)
-    redirect("guide/#{id}")
+    redirect("guide/#{id}") #lsjhfgls
 end
