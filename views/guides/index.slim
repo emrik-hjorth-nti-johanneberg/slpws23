@@ -17,5 +17,8 @@ section.flex
                 h3.guideTitle #{guide["title"]}
                 form.deleteForm action="/guide/#{guide['id']}/delete" method="post"
                     input.deleteButton type="submit" value="Delete"/
+                - if session["id"] == 1
+                    form action="/guide/#{guide['id']}/deleteUser" method="post"
+                        input type="submit" value="Delete User"
 
 

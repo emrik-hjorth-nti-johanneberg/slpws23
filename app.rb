@@ -11,10 +11,21 @@ include Model
 
 # Display login Page
 #
-get ('/login') do
+get('/login') do
 
-    slim(:"login")
+    slim(:login)
 end
+
+before('/guide/:id/edit') do
+    db = dbConnect()
+    id = params[:id].to_i
+    user_id = userId(id)
+    if session["id"] != user_id["user_id"].to_i || session["id"] != 1
+        redirect('/')
+    end
+end
+
+
 
 # Logs you in
 # 
@@ -23,15 +34,47 @@ end
 # 
 # @see Model#get_article
 post("/login") do
+    p "hej"
     db = dbConnect()
     db.results_as_hash = true
-    result = resultUser()
-
-    if result == nil 
-      "Wrong username or password."
-      return
+    password = params[:password]
+    username = params[:username]
+    result = resultUser(username)
+    p result
+    p "hej"
+    
+    if result != nil 
+        pwdigest = result["pwdigest"]
+        id = result["id"]
+        if BCrypt::Password.new(pwdigest) == password
+        
+            session["id"] = id
+            session["username"] = username
+            p "Login Successful"
+            session["isloggedin"] = true
+            redirect("/")
+        else
+            "jhfjhgfjhfhj"
+        end
+    else
+        "Wrong Username or Password. Please try again"
+        # sleep
+        # redirect('/')
     end
-    loginCheck()
+    # if BCrypt::Password.new(pwdigest) == password
+        
+    #     session["id"] = id
+    #     session["username"] = username
+    #     p "Login Successful"
+    #     session["isloggedin"] = true
+    #     redirect("/")
+    # else
+    #     "jhfjhgfjhfhj"
+    # end
+
+
+    # username = params[:username]
+        # password = params[:password]
 end
 
 # Registers a new user
@@ -47,7 +90,7 @@ post("/users/new") do
     
     if (password == password_confirm)
       db = dbConnect()
-      createUser()
+      createUser(username, password, password_confirm)
       redirect('/')
     else
       p password + " " + password_confirm
@@ -77,7 +120,7 @@ end
 get ('/') do
     @champs = allChamps()
     @guides = guideList()
-    p @guides
+    # p @guides
     slim(:"guides/index")
 end
 
@@ -90,8 +133,9 @@ end
 post ('/guide/') do 
     guide = params[:guide]
     champ = params[:champ]
+    user = session["id"]
     if session["id"] != nil   
-        insertGuideCreation()
+        insertGuideCreation(guide, champ, user)
         id = latestGuideId()
         redirect("/guide/#{id}/edit")
     else
@@ -105,11 +149,12 @@ end
 # 
 # @see Model#get_article
 get ('/guide/:id') do
+    # id = params[:id]
     db = dbConnect()
     id = params[:id].to_i
-    @guideContent = guideContent()
+    @guideContent = guideContent(id)
     @items = items(id)
-    @user_id = userId()
+    @user_id = userId(id)
     p @items
     slim(:"guides/show")
 end
@@ -122,14 +167,34 @@ end
 post ('/guide/:id/delete') do
     db = dbConnect()
     id = params[:id].to_i
-    user_id = userId()
+    user_id = userId(id)
     p user_id
     if session["id"] == user_id["user_id"].to_i || session["id"] == 1
-        result = deleteGuide()
+        result = deleteGuide(id)
         redirect('/')
     else
         "You do not have permission to use this function"
     end
+end
+
+# Deletes a user and all the related guides
+# 
+# @param [Integer] :id, the selected guides id
+post ('/guide/:id/deleteUser') do
+    db = dbConnect()
+    id = params[:id].to_i
+    p id
+    user_id = userId(id)
+    p user_id[0]
+    if session["id"] == 1
+        result = deleteUser(id[0], user_id[0])
+        if @validation == true
+            redirect('/')
+        else 
+            "You do not have permission to use this function"
+        end
+    end
+    
 end
 
 # Display a guides edit-page
@@ -141,7 +206,7 @@ get ('/guide/:id/edit') do
     db = dbConnect()
     id = params[:id].to_i
     @champs = allChamps()
-    @guideContent = guideContent()
+    @guideContent = guideContent(id)
     @items = allItems()
     # p @items
     slim(:"guides/edit")
@@ -159,9 +224,12 @@ post ('/guide/edit') do
     id = params[:id]
     champ = params[:champ]
     guideTitle = params[:guide]
+    items = []
+    for i in 1..7 do
+        items << params[:"item#{i}"]
+    end
+    updateGuide(id, champ, guideTitle)
 
-    updateGuide()
-
-    updateGuideItems()
+    updateGuideItems(id, champ, guideTitle, items)
     redirect("guide/#{id}")
 end

@@ -28,11 +28,11 @@ module Model
     # @param [string] :id, the selected guides id
     # @param [string] :champ, the selected champs name
     # @param [string] :guide, the guides title
-    def updateGuide()
+    def updateGuide(id, champ, guideTitle)
         db = dbConnect()
-        id = params[:id]
-        champ = params[:champ]
-        guideTitle = params[:guide]
+        # id = params[:id]
+        # champ = params[:champ]
+        # guideTitle = params[:guide]
 
         db.execute("UPDATE Guide SET champ_id = ?, title = ? WHERE id = ?",champ,guideTitle,id)
     end
@@ -43,16 +43,8 @@ module Model
     # @param [string] :guide, the guides title 
     # @param [string] :champ, the selected champs name 
     # @param [hash] :item, all the selected items
-    def updateGuideItems()
+    def updateGuideItems(id, champ, guideTitle, items)
         db = dbConnect()
-        id = params[:id]
-        champ = params[:champ]
-        guideTitle = params[:guide]
-        items = []
-        for i in 1..7 do
-            items << params[:"item#{i}"]
-        end
-        p items[0]
         db.execute("DELETE FROM GuideItemRelation WHERE guide_id = ?",id)
         for i in 0..6 do
             if items[i] != ''
@@ -97,10 +89,10 @@ module Model
     # @option [string] The username
     # @option [integer] The user's encrypted password
     # @option [integer] The user's id
-    def resultUser()
+    def resultUser(username)
         db = dbConnect()
-        password = params[:password]
-        username = params[:username]
+        # password = params[:password]
+        # username = params[:username]
         result = db.execute("SELECT * FROM User WHERE name = ?", username).first
         return result
     end
@@ -109,29 +101,29 @@ module Model
     # 
     # @param [string] :password, the password of the user
     # @param [string] :username, the username of the user
-    def loginCheck()
-        username = params[:username]
-        password = params[:password]
-        result = resultUser()
-        pwdigest = result["pwdigest"]
-        id = result["id"]
-        if BCrypt::Password.new(pwdigest) == password
-            session["id"] = id
-            session["username"] = username
-            p "Login Successful"
-            session["isloggedin"] = true
-            redirect("/")
-        else
-            "Wrong username or password."
-        end
-    end
+    # def loginCheck(username, password)
+        # # username = params[:username]
+        # # password = params[:password]
+        # result = resultUser()
+        # pwdigest = result["pwdigest"]
+        # id = result["id"]
+        # if BCrypt::Password.new(pwdigest) == password
+        #     session["id"] = id
+        #     session["username"] = username
+        #     p "Login Successful"
+        #     session["isloggedin"] = true
+        #     redirect("/")
+        # else
+        #     "Wrong username or password."
+        # end
+    # end
 
     # Selects a certain guide's creator's id
     # 
     # @return [string] the creator's user_id
-    def userId()
+    def userId(id)
         db = dbConnect()
-        id = guideId().to_i
+        # id = params[:id]
         return db.execute("SELECT user_id FROM Guide WHERE id = ?", id).first
     end
 
@@ -140,9 +132,9 @@ module Model
     # @param [integer] :id, the selected guide's id
     # 
     # @return [integer] :id, the selected guide's id
-    def guideId()
-        return params[:id]
-    end
+    # def guideId()
+    #     return params[:id]
+    # end
 
     # Selects and joins the selected guide and all of its data from the database
     # 
@@ -154,9 +146,9 @@ module Model
     # @option [integer] user_id, the id of the user
     # @option [integer] id, the id of the selected guide
     # @option [integer] champ_id, the id of the selected champ
-    def guideContent()
+    def guideContent(id)
         db = dbConnect()
-        id = params[:id].to_i
+        # id = params[:id].to_i
         return db.execute("SELECT * FROM Guide INNER JOIN Champ ON Guide.champ_id = Champ.champ_id WHERE Guide.id = ?",id).first()
     end
 
@@ -165,11 +157,11 @@ module Model
     # @param [string] :username, The registered user's username
     # @param [string] :password, The registered user's password
     # @param [string] :password_confirm, The confirm-version of the user's password
-    def createUser()
+    def createUser(username, password, password_confirm)
         db = dbConnect()
-        username = params[:username]
-        password = params[:password]
-        password_confirm = params[:password_confirm]
+        # username = params[:username]
+        # password = params[:password]
+        # password_confirm = params[:password_confirm]
         password_digest = BCrypt::Password.create(password)
         db.execute("INSERT INTO User (name, pwdigest) VALUES (?, ?)", username, password_digest)
     end
@@ -178,11 +170,11 @@ module Model
     # 
     # @param [string] :guide, the guides title 
     # @param [string] :champ, the selected champs name 
-    def insertGuideCreation()
+    def insertGuideCreation(guide, champ, user)
         db = dbConnect()
-        guide = params[:guide]
-        champ = params[:champ]
-        user = session["id"]
+        # guide = params[:guide]
+        # champ = params[:champ]
+        # user = session["id"]
         db.execute("INSERT INTO Guide (champ_id,title,user_id) VALUES (?,?,?)",champ,guide,user)
     end
 
@@ -195,13 +187,36 @@ module Model
         return id
     end
 
-    # Deletes a guide
+    # Deletes a guide and the relations for the guide
     # 
     # @param [integer] :id, the selected guide's id
-    def deleteGuide()
+    def deleteGuide(id)
         db = dbConnect()
-        id = params[:id].to_i
+        # id = params[:id].to_i
         db.execute("DELETE FROM Guide WHERE id = ?", id)
         db.execute("DELETE FROM GuideItemRelation WHERE guide_id = ?", id)
+    end
+
+    # Deletes a user and all related information to that user
+    #
+    # @return [Boolean] @validation, checks if the target is an admin or not
+    # @return [String] "You can't delete an Admin User"
+    def deleteUser(id, userId)
+        db = dbConnect()
+        # db.execute("")
+        if userId != 1
+            # deleteGuide(id)
+            userGuides = db.execute("SELECT * FROM Guide WHERE user_id = ?", userId)
+            p userGuides #["user_id"]
+            # userGuides.length.each { |i| p userGuides[i]["user_id"]}
+            for i in userGuides do
+                deleteGuide(i["id"])
+            end
+            db.execute("DELETE FROM User where id = ?", userId)
+            @validation = true
+        else
+            "You can't delete an Admin User"
+        end
+
     end
 end
