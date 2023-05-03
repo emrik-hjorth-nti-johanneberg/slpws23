@@ -40,7 +40,9 @@ post("/login") do
     username = params[:username]
     login_attempts = login_attempt(username)
     if (login_attempts.length > 5 && Time.now.to_i - login_attempts.reverse[5]["time"] < 10)
+        p "Too many login attempts wait for 10 seconds"
         redirect('/login')
+        
     end
     
     
@@ -58,8 +60,8 @@ post("/login") do
             p "Login Successful"
             session["isloggedin"] = true
             redirect("/")
-        else
-            "jhfjhgfjhfhj"
+        else 
+            "Wrong Username or Password. Please try again"
         end
     else
         "Wrong Username or Password. Please try again"
